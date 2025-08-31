@@ -68,7 +68,7 @@ export default function RegisterPage() {
             } else {
                 setShowError(true)
             }
-        } catch (_) {
+        } catch {
             setShowError(true)
         } finally {
             setIsLoading(false)

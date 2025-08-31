@@ -65,7 +65,7 @@ export default function LoginPage() {
             } else {
                 setShowErrorDialog(true)
             }
-        } catch (_) {
+        } catch {
             setShowErrorDialog(true)
         } finally {
             setIsLoading(false)
