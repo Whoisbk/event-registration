@@ -4,13 +4,11 @@ import type React from "react"
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import { FieldInput } from "@/components/ui/field-input"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Separator } from "@/components/ui/separator"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { SuccessDialog } from "@/components/ui/success-dialog"
 import { ErrorDialog } from "@/components/ui/error-dialog"
 import Link from "next/link"
-import {  X } from "lucide-react"
+import { X } from "lucide-react"
 import handImg from "../../../../public/images/undraw_confirmed_c5lo 1.svg"
 import Image from "next/image"
 import Ticket from "../../../../public/images/Entrance Ticket.svg"
@@ -115,13 +113,16 @@ export default function TicketPage() {
                                     <span className="text-center font-[400] text-black">
                                         Save this code - you’ll need to present it to the to get your wristband at the venue.
                                     </span>
-                                    <Button
-                                        type="submit"
-                                        disabled={isLoading}
-                                        className=" h-[48px] w-[150px] font-bold  text-[20px] rounded-full text-base hover:cursor-pointer bg-[#D6215E] hover:bg-gradient-to-r from-primary via-[#FC904E] to-accent hover:from-primary/90 hover:via-[#D6215E]/90 hover:to-accent/90 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
-                                    >
-                                        Okay got it
-                                    </Button>
+                                    <Link href="/register">
+                                        <Button
+                                            type="button"
+
+                                            disabled={isLoading}
+                                            className=" h-[48px] w-[150px] font-bold  text-[20px] rounded-full text-base hover:cursor-pointer bg-[#D6215E] hover:bg-gradient-to-r from-primary via-[#FC904E] to-accent hover:from-primary/90 hover:via-[#D6215E]/90 hover:to-accent/90 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+                                        >
+                                            Okay got it
+                                        </Button>
+                                    </Link>
                                 </motion.div>
                             </CardContent>
 
