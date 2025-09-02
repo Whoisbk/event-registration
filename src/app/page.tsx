@@ -1,68 +1,45 @@
 import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { PartyPopper, Users, Calendar, Sparkles } from "lucide-react"
+import { ChevronRight } from "lucide-react"
+import Logo from "../../public/images/logo.png"
+import HomeSvg from "../../public/images/Group 34.png"
+import Image from "next/image"
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary/5 via-background to-accent/5">
-      {/* Hero Section */}
-      <div className="container mx-auto px-4 py-16">
-        <div className="text-center space-y-8">
-          <div className="flex justify-center">
-            <div className="w-24 h-24 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center animate-bounce">
-              <PartyPopper className="w-12 h-12 text-white" />
-            </div>
-          </div>
+    <div className="min-h-screen bg-gray-50 flex flex-col px-6">
+      {/* Header with Logo */}
+      <div className="flex justify-center pt-4">
+        <div className="flex items-center">
 
-          <div className="space-y-4">
-            <h1 className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent text-balance">
-              Party Time!
-            </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto text-pretty">
-              Join the ultimate event platform where every celebration becomes unforgettable
-            </p>
-          </div>
+          <Image src={Logo} alt="Home" width={69} height={69} className="object-contain" />
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button
-              asChild
-              size="lg"
-              className="text-lg px-8 py-6 bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90"
-            >
-              <Link href="/register">Get Started 🎉</Link>
-            </Button>
-            <Button asChild variant="outline" size="lg" className="text-lg px-8 py-6 border-2 bg-transparent">
-              <Link href="/login">Sign In</Link>
-            </Button>
-          </div>
         </div>
+      </div>
 
-        {/* Features */}
-        <div className="mt-24 grid md:grid-cols-3 gap-8">
-          <div className="text-center space-y-4 p-6 rounded-2xl bg-card/50 backdrop-blur-sm border">
-            <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
-              <Users className="w-8 h-8 text-primary" />
-            </div>
-            <h3 className="text-xl font-semibold">Connect</h3>
-            <p className="text-muted-foreground">Meet amazing people and build lasting friendships at every event</p>
-          </div>
+      {/* Main Content */}
+      <div className="flex items-center justify-center space-y-[16px] pb-4 pt-4">
+        {/* Illustration Area */}
+        <Image src={HomeSvg} alt="Home" width={280} height={230} className="object-contain" />
 
-          <div className="text-center space-y-4 p-6 rounded-2xl bg-card/50 backdrop-blur-sm border">
-            <div className="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto">
-              <Calendar className="w-8 h-8 text-accent" />
-            </div>
-            <h3 className="text-xl font-semibold">Discover</h3>
-            <p className="text-muted-foreground">Find the perfect events that match your interests and schedule</p>
-          </div>
+      </div>
+      <div className="space-y-[16px]">
+        <h1 className="text-[32px] font-semibold text-black flex items-center justify-start gap-2 leading-10">
+          Welcome!
+          <span className="text-3xl">👋</span>
+        </h1>
 
-          <div className="text-center space-y-4 p-6 rounded-2xl bg-card/50 backdrop-blur-sm border">
-            <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
-              <Sparkles className="w-8 h-8 text-primary" />
-            </div>
-            <h3 className="text-xl font-semibold">Celebrate</h3>
-            <p className="text-muted-foreground">Create unforgettable memories at events designed for pure joy</p>
-          </div>
-        </div>
+        <p className="text-[22px] w-full text-black leading-[160%] ">
+          Check-in online in less than 3 minutes to get your wristband number and skip the queue.
+        </p>
+      </div>
+
+      {/* Bottom Navigation Button */}
+      <div className="fixed bottom-8 right-8 hover:cursor-pointer bg-[#252525] rounded-full h-[50px] w-[50px] flex items-center justify-center">
+
+        <Link href="/register">
+          <ChevronRight className="w-6 h-6 text-white" />
+        </Link>
+
       </div>
     </div>
   )
