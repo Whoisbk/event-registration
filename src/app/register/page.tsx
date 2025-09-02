@@ -10,9 +10,10 @@ import { Separator } from "@/components/ui/separator"
 import { SuccessDialog } from "@/components/ui/success-dialog"
 import { ErrorDialog } from "@/components/ui/error-dialog"
 import Link from "next/link"
-import { PartyPopper, Mail, User, Phone, Smartphone, ChevronLeft, UserRound } from "lucide-react"
+import { PartyPopper, Mail, User, Phone, Smartphone, ChevronLeft, UserRound, ChevronRight } from "lucide-react"
 import Image from "next/image"
 import Logo from "../../../public/images/LogoSVG.svg"
+import { useRouter } from "next/navigation"
 
 const fadeIn = {
     hidden: { opacity: 0, y: 20 },
@@ -55,6 +56,7 @@ export default function RegisterPage() {
     const [showError, setShowError] = useState(false)
     const [userCode, setUserCode] = useState("")
     const [isLoading, setIsLoading] = useState(false)
+    const router = useRouter()
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault()
@@ -62,9 +64,7 @@ export default function RegisterPage() {
 
         try {
             if (formData.email && formData.firstName && formData.lastName && formData.phoneNumber) {
-                const eventCode = `PARTY${Math.random().toString(36).substring(2, 8).toUpperCase()}`
-                setUserCode(eventCode)
-                setShowSuccess(true)
+                router.push('/ticket')
             } else {
                 setShowError(true)
             }
@@ -79,11 +79,11 @@ export default function RegisterPage() {
         <motion.div
             initial="hidden"
             animate="visible"
-            className="h-screen bg-gradient-to-br from-[#EBC894] via-background to-[#bba8f5] flex items-center justify-center py-4 px-[24px]"
+            className="h-screen bg-gradient-to-br from-[#EBC894] via-background to-[#bba8f5] flex items-center justify-center p-[24px] "
         >
 
 
-            <motion.div variants={popIn} className="w-full max-w-md">
+            <motion.div variants={popIn} className="w-full max-w-md h-[606px] gap-[36px]">
                 <div className="relative">
                     <div className="absolute top-4 left-4 bg-white w-[40px] h-[40px] rounded-full p-2">
                         <Link href="/">
@@ -92,7 +92,7 @@ export default function RegisterPage() {
                     </div>
                     <div className="p-[1px] rounded-3xl bg-gradient-to-r from-[#D0F5FC] to-[#3F9CAB]">
                         <Card className="shadow-2xl bg-gradient-to-br from-[#FAF5EF] to-[#FDFCFC] rounded-3xl border-0">
-                            <CardHeader className="text-center space-y-3">
+                            <CardHeader className="text-center mb-2">
                                 <Image
                                     src={Logo}
                                     alt="Logo"
@@ -101,10 +101,10 @@ export default function RegisterPage() {
                                     className=" object-contain mx-auto"
                                 />
                                 <motion.div variants={fadeIn} className="gap-12">
-                                    <CardTitle className="text-[30px] font-bold bg-linear-to-r from-[#FC904E] via-[#FF3450] to-[#FF00F8] bg-clip-text text-transparent">
+                                    <CardTitle className="leading-[100%] text-[26px] font-bold bg-linear-to-r from-[#FC904E] via-[#FF3450] to-[#FF00F8] bg-clip-text text-transparent">
                                         Online Check-in
                                     </CardTitle>
-                                    <CardDescription className="text-[16px] mt-1">
+                                    <CardDescription className="text-[16px] mt-1 text-black font-[400] leading-[100%] w-[274px] md:w-full">
                                         Fill in your details below and skip the queue at the venue.
                                     </CardDescription>
                                 </motion.div>
@@ -168,10 +168,11 @@ export default function RegisterPage() {
                                         <Button
                                             type="submit"
                                             disabled={isLoading}
-                                            className=" h-[48px] w-[150px] font-bold  text-[20px] rounded-full text-base hover:cursor-pointer bg-[#D6215E] hover:bg-gradient-to-r from-primary via-[#FC904E] to-accent hover:from-primary/90 hover:via-[#D6215E]/90 hover:to-accent/90 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+                                            className="group h-[48px] w-[150px] hover:w-[167px] font-bold  text-[20px] rounded-full text-base hover:cursor-pointer bg-[#D6215E] hover:bg-linear-to-r hover:from-[#FC904E] hover:via-[#FF3450]/90 hover:to-[#FF00F8] transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
                                         >
-                                            {isLoading ? "Checking in..." : "Check me in"}
+                                            {isLoading ? "Checking in..." : "Check me in"} <ChevronRight className="w-6 h-5 text-white hidden group-hover:inline-block" />
                                         </Button>
+                                        
                                     </motion.div>
                                 </motion.form>
                             </CardContent>
