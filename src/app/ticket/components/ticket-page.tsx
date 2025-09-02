@@ -11,9 +11,9 @@ import { SuccessDialog } from "@/components/ui/success-dialog"
 import { ErrorDialog } from "@/components/ui/error-dialog"
 import Link from "next/link"
 import {  X } from "lucide-react"
-import handImg from "../../../public/images/undraw_confirmed_c5lo 1.svg"
+import handImg from "../../../../public/images/undraw_confirmed_c5lo 1.svg"
 import Image from "next/image"
-import Ticket from "../../../public/images/Entrance Ticket.svg"
+import Ticket from "../../../../public/images/Entrance Ticket.svg"
 
 const fadeIn = {
     hidden: { opacity: 0, y: 20 },

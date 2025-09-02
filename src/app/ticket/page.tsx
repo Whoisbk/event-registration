@@ -1,7 +1,7 @@
 import React from 'react'
 import TicketPage from './components/ticket-page'
 import { Metadata } from 'next'
-import Logo from "../../../public/images/LogoSVG.svg"
+import Logo from "../../../public/images/logo.png"
 
 
 export async function generateMetadata(): Promise<Metadata> {
