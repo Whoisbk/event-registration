@@ -1,7 +1,7 @@
 import Link from "next/link"
 import { ChevronRight } from "lucide-react"
-import Logo from "../../public/images/logo.png"
-import HomeSvg from "../../public/images/Group 34.png"
+import Logo from "../../public/images/LogoSVG.svg"
+import HomeSvg from "../../public/images/Group 34.svg"
 import Image from "next/image"
 
 export default function HomePage() {

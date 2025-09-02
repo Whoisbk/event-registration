@@ -5,14 +5,13 @@ import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { FieldInput } from "@/components/ui/field-input"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Separator } from "@/components/ui/separator"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
-import Link from "next/link"
 import { PartyPopper, Mail, User, CheckCircle, AlertCircle } from "lucide-react"
 import { useRouter } from "next/navigation"
 import Image from "next/image"
-import Logo from "../../../public/images/logo.png"
+// import Logo from "../../../public/images/logo.png"
+import Logo from "../../../public/images/LogoSVG.svg"
 
 const fadeIn = {
     hidden: { opacity: 0, y: 20 },
