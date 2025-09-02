@@ -13,7 +13,7 @@ export const FieldInput = React.forwardRef<HTMLInputElement, FieldInputProps>(
     ({ label, icon, error, className, ...props }, ref) => {
         return (
             <div className="relative">
-                <label className="absolute -top-[10px] left-3 bg-white px-0 text-sm font-semibold text-foreground z-10">
+                <label className="absolute -top-[10px] left-3 bg-[#F9F4F5] px-0 text-sm font-semibold text-foreground z-10">
                     {label}
                 </label>
                 <div className="relative">
@@ -21,7 +21,7 @@ export const FieldInput = React.forwardRef<HTMLInputElement, FieldInputProps>(
                     <input
                         ref={ref}
                         className={cn(
-                            "w-full h-[51px] rounded-lg border-[1.36px] border-black bg-white px-3 py-3 text-sm",
+                            "w-full h-[51px] rounded-lg border-[1.36px] border-black bg-transparent px-3 py-3 text-sm",
                             "placeholder:text-muted-foreground",
                             "focus:outline-none focus:ring-2 focus:ring-ring focus:border-[1.36px] focus:border-black",
                             "disabled:cursor-not-allowed disabled:opacity-50",

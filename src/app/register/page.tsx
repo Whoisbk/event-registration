@@ -10,7 +10,7 @@ import { Separator } from "@/components/ui/separator"
 import { SuccessDialog } from "@/components/ui/success-dialog"
 import { ErrorDialog } from "@/components/ui/error-dialog"
 import Link from "next/link"
-import { PartyPopper, Mail, User, Phone, Smartphone, ChevronLeft } from "lucide-react"
+import { PartyPopper, Mail, User, Phone, Smartphone, ChevronLeft, UserRound } from "lucide-react"
 import Image from "next/image"
 import Logo from "../../../public/images/logo.png"
 
@@ -79,7 +79,7 @@ export default function RegisterPage() {
         <motion.div
             initial="hidden"
             animate="visible"
-            className="min-h-screen bg-gradient-to-br from-[#EBC894] via-background to-[#B49EF4] flex items-center justify-center p-4"
+            className="min-h-screen bg-gradient-to-br from-[#EBC894] via-background to-[#B49EF4] flex items-center justify-center py-4 px-[24px]"
         >
 
 
@@ -102,7 +102,7 @@ export default function RegisterPage() {
                                     <CardTitle className="text-[30px] font-bold bg-linear-to-r from-[#FC904E] via-[#FF3450] to-[#FF00F8] bg-clip-text text-transparent">
                                         Online Check-in
                                     </CardTitle>
-                                    <CardDescription className="text-[16px] mt-1 mx-8 md:mx-0">
+                                    <CardDescription className="text-[16px] mt-1">
                                         Fill in your details below and skip the queue at the venue.
                                     </CardDescription>
                                 </motion.div>
@@ -115,7 +115,7 @@ export default function RegisterPage() {
                                             id="firstName"
                                             type="text"
                                             label="First Name"
-                                            icon={<User className="w-4 h-4" />}
+                                            icon={<UserRound className="w-5 h-5" />}
                                             placeholder="Enter your first name"
                                             value={formData.firstName}
                                             onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
@@ -128,7 +128,7 @@ export default function RegisterPage() {
                                             id="lastName"
                                             type="text"
                                             label="Surname"
-                                            icon={<User className="w-4 h-4" />}
+                                            icon={<UserRound className="w-5 h-5" />}
                                             placeholder="Enter your surname"
                                             value={formData.lastName}
                                             onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
@@ -141,7 +141,7 @@ export default function RegisterPage() {
                                             id="email"
                                             type="email"
                                             label="Email Address"
-                                            icon={<Mail className="w-4 h-4" />}
+                                            icon={<Mail className="w-5 h-5" />}
                                             placeholder="your@email.com"
                                             value={formData.email}
                                             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -154,7 +154,7 @@ export default function RegisterPage() {
                                             id="phoneNumber"
                                             type="tel"
                                             label="Phone Number"
-                                            icon={<Smartphone className="w-4 h-4" />}
+                                            icon={<Smartphone className="w-5 h-5" />}
                                             placeholder="Enter your phone number"
                                             value={formData.phoneNumber}
                                             onChange={(e) => setFormData({ ...formData, phoneNumber: e.target.value })}
@@ -166,7 +166,7 @@ export default function RegisterPage() {
                                         <Button
                                             type="submit"
                                             disabled={isLoading}
-                                            className=" h-[48px] w-[150px] text-[20px] rounded-full text-base hover:cursor-pointer font-semibold bg-[#D6215E] hover:bg-gradient-to-r from-primary via-[#FC904E] to-accent hover:from-primary/90 hover:via-[#D6215E]/90 hover:to-accent/90 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+                                            className=" h-[48px] w-[150px] font-bold  text-[20px] rounded-full text-base hover:cursor-pointer bg-[#D6215E] hover:bg-gradient-to-r from-primary via-[#FC904E] to-accent hover:from-primary/90 hover:via-[#D6215E]/90 hover:to-accent/90 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
                                         >
                                             {isLoading ? "Checking in..." : "Check me in"}
                                         </Button>
