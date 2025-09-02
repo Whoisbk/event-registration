@@ -86,7 +86,9 @@ export default function RegisterPage() {
             <motion.div variants={popIn} className="w-full max-w-md">
                 <div className="relative">
                     <div className="absolute top-4 left-4 bg-white w-[40px] h-[40px] rounded-full p-2">
-                        <ChevronLeft className="w-full h-full" />
+                        <Link href="/">
+                            <ChevronLeft className="w-full h-full" />
+                        </Link>
                     </div>
                     <div className="p-[1px] rounded-3xl bg-gradient-to-r from-[#D0F5FC] to-[#3F9CAB]">
                         <Card className="shadow-2xl bg-gradient-to-br from-[#FAF5EF] to-[#FDFCFC] rounded-3xl border-0">
@@ -174,7 +176,7 @@ export default function RegisterPage() {
                                 </motion.form>
                             </CardContent>
 
-                           
+
                         </Card>
                     </div>
                 </div>
