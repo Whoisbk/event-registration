@@ -183,8 +183,8 @@ export default function RegisterPage() {
             </motion.div>
 
             <AnimatePresence>
-                <SuccessDialog isOpen={showSuccess} onClose={setShowSuccess} userCode={userCode} />
-                <ErrorDialog isOpen={showError} onClose={setShowError} />
+                <SuccessDialog key="success-dialog" isOpen={showSuccess} onClose={setShowSuccess} userCode={userCode} />
+                <ErrorDialog key="error-dialog" isOpen={showError} onClose={setShowError} />
             </AnimatePresence>
         </motion.div>
     )
