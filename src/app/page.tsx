@@ -1,12 +1,12 @@
 import Link from "next/link"
 import { ChevronRight } from "lucide-react"
-import Logo from "../../public/images/logo.png"
-import HomeSvg from "../../public/images/Group 34.png"
+import Logo from "../../public/images/LogoSVG.svg"
+import HomeSvg from "../../public/images/Group 34.svg"
 import Image from "next/image"
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col px-6">
+    <div className="h-screen bg-gray-50 flex flex-col px-6">
       {/* Header with Logo */}
       <div className="flex justify-center pt-4">
         <div className="flex items-center">

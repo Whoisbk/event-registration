@@ -12,7 +12,7 @@ import { ErrorDialog } from "@/components/ui/error-dialog"
 import Link from "next/link"
 import { PartyPopper, Mail, User, Phone, Smartphone, ChevronLeft, UserRound } from "lucide-react"
 import Image from "next/image"
-import Logo from "../../../public/images/logo.png"
+import Logo from "../../../public/images/LogoSVG.svg"
 
 const fadeIn = {
     hidden: { opacity: 0, y: 20 },
@@ -79,7 +79,7 @@ export default function RegisterPage() {
         <motion.div
             initial="hidden"
             animate="visible"
-            className="min-h-screen bg-gradient-to-br from-[#EBC894] via-background to-[#B49EF4] flex items-center justify-center py-4 px-[24px]"
+            className="h-screen bg-gradient-to-br from-[#EBC894] via-background to-[#bba8f5] flex items-center justify-center py-4 px-[24px]"
         >
 
 
@@ -183,8 +183,8 @@ export default function RegisterPage() {
             </motion.div>
 
             <AnimatePresence>
-                <SuccessDialog isOpen={showSuccess} onClose={setShowSuccess} userCode={userCode} />
-                <ErrorDialog isOpen={showError} onClose={setShowError} />
+                <SuccessDialog key="success-dialog" isOpen={showSuccess} onClose={setShowSuccess} userCode={userCode} />
+                <ErrorDialog key="error-dialog" isOpen={showError} onClose={setShowError} />
             </AnimatePresence>
         </motion.div>
     )

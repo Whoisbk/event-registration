@@ -23,18 +23,16 @@ export const FieldInput = React.forwardRef<HTMLInputElement, FieldInputProps>(
                         className={cn(
                             "w-full h-[51px] rounded-lg border-[1.36px] border-black bg-transparent px-3 py-3 text-sm",
                             "placeholder:text-muted-foreground",
-                            "focus:outline-none focus:ring-2 focus:ring-ring focus:border-[1.36px] focus:border-black",
+                            "focus:outline-none focus:ring-0 focus:border-red-500 focus:ring-ring focus:border-[1.36px] ",
                             "disabled:cursor-not-allowed disabled:opacity-50",
                             icon && "pl-10",
-                            error && "border-destructive focus:ring-destructive",
+                            error && "border-red-500 focus:ring-red-500",
                             className,
                         )}
                         {...props}
                     />
                 </div>
-                {error && (
-                    <p className="mt-1 text-xs text-destructive">{error}</p>
-                )}
+               
             </div>
         )
     }
