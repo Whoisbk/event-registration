@@ -4,14 +4,15 @@ import type React from "react"
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
+import { FieldInput } from "@/components/ui/field-input"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import Link from "next/link"
 import { PartyPopper, Mail, User, CheckCircle, AlertCircle } from "lucide-react"
 import { useRouter } from "next/navigation"
+import Image from "next/image"
+import Logo from "../../../public/images/logo.png"
 
 const fadeIn = {
     hidden: { opacity: 0, y: 20 },
@@ -59,7 +60,7 @@ export default function LoginPage() {
 
         try {
             if (email == "test@test.com" && firstName == "TEST" && lastName == "TEST") {
-                const eventCode = `PARTY${Math.random().toString(36).substr(2, 6).toUpperCase()}`
+                const eventCode = `PARTY${Math.random().toString(36).substring(2, 8).toUpperCase()}`
                 setUserCode(eventCode)
                 setShowSuccessDialog(true)
             } else {
@@ -76,149 +77,93 @@ export default function LoginPage() {
         <motion.div
             initial="hidden"
             animate="visible"
-            className="min-h-screen bg-gradient-to-br from-primary/10 via-background to-accent/10 flex items-center justify-center p-4"
+            className="min-h-screen bg-gradient-to-br from-[#EBC894] to-[#B49EF4] flex items-center justify-center p-4"
         >
-            <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                <AnimatePresence>
-                    <motion.div
-                        initial={{ y: -20, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        transition={{ delay: 0.5, duration: 0.5 }}
-                        className="absolute top-20 left-10 text-primary/20"
-                    >
-                        <PartyPopper size={32} />
-                    </motion.div>
-                    <motion.div
-                        initial={{ y: -20, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        transition={{ delay: 0.7, duration: 0.5 }}
-                        className="absolute top-40 right-20 text-accent/20"
-                    >
-                        <PartyPopper size={24} />
-                    </motion.div>
-                    <motion.div
-                        initial={{ y: 20, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        transition={{ delay: 0.9, duration: 0.5 }}
-                        className="absolute bottom-32 left-20 text-primary/20"
-                    >
-                        <PartyPopper size={28} />
-                    </motion.div>
-                    <motion.div
-                        initial={{ y: 20, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        transition={{ delay: 1.1, duration: 0.5 }}
-                        className="absolute bottom-20 right-10 text-accent/20"
-                    >
-                        <PartyPopper size={20} />
-                    </motion.div>
-                </AnimatePresence>
-            </div>
+           
 
             <motion.div variants={popIn} className="w-full max-w-md">
-                <Card className="shadow-2xl border-0 bg-card/95 backdrop-blur-sm">
-                    <CardHeader className="text-center space-y-4">
-                        <motion.div
-                            initial={{ scale: 0 }}
-                            animate={{ scale: 1 }}
-                            transition={{ type: "spring", stiffness: 260, damping: 20 }}
-                            className="mx-auto w-16 h-16 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center"
-                        >
-                            <PartyPopper className="w-8 h-8 text-white" />
-                        </motion.div>
-                        <motion.div variants={fadeIn}>
-                            <CardTitle className="text-3xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                                Welcome to the Party!
-                            </CardTitle>
-                            <CardDescription className="text-lg mt-2">Ready to party? Verify your account or create an account</CardDescription>
-                        </motion.div>
-                    </CardHeader>
-
-                    <CardContent>
-                        <motion.form onSubmit={handleSubmit} className="space-y-6" variants={staggerContainer}>
-                            <motion.div variants={fadeIn} className="space-y-2">
-                                <Label htmlFor="firstName" className="text-sm font-medium">
-                                    First Name
-                                </Label>
-                                <div className="relative">
-                                    <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
-                                    <Input
-                                        id="firstName"
-                                        type="text"
-                                        placeholder="Enter your first name"
-                                        value={firstName}
-                                        onChange={(e) => setFirstName(e.target.value)}
-                                        className="pl-10 h-12 border-2 focus:border-primary transition-colors"
-                                        required
+                <div className="relative">
+                    <div className="p-[2px] rounded-3xl bg-linear-to-r from-[#D0F5FC] to-[#3F9CAB]">
+                        <Card className="shadow-2xl bg-gradient-to-br from-[#FAF5EF] to-[#FDFCFC] rounded-3xl border-0">
+                            <CardHeader className="text-center space-y-3">
+                                
+                                    <Image
+                                        src={Logo}
+                                        alt="Logo"
+                                        width={80}
+                                        height={75.5}
+                                        className=" object-contain mx-auto"
                                     />
-                                </div>
-                            </motion.div>
 
-                            <motion.div variants={fadeIn} className="space-y-2">
-                                <Label htmlFor="lastName" className="text-sm font-medium">
-                                    Last Name
-                                </Label>
-                                <div className="relative">
-                                    <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
-                                    <Input
-                                        id="lastName"
-                                        type="text"
-                                        placeholder="Enter your last name"
-                                        value={lastName}
-                                        onChange={(e) => setLastName(e.target.value)}
-                                        className="pl-10 h-12 border-2 focus:border-primary transition-colors"
-                                        required
-                                    />
-                                </div>
-                            </motion.div>
+                                <motion.div variants={fadeIn}>
+                                    <CardTitle className="text-[26px] font-bold bg-gradient-to-r from-[#FC904E] via-[#FF3450] to-[#FF00F8] bg-clip-text text-transparent">
+                                        Online Check-in
+                                    </CardTitle>
+                                    <CardDescription className="text-base mt-1">Fill in your details below and skip the queue at the venue.</CardDescription>
+                                </motion.div>
+                            </CardHeader>
 
-                            <motion.div variants={fadeIn} className="space-y-2">
-                                <Label htmlFor="email" className="text-sm font-medium">
-                                    Email Address
-                                </Label>
-                                <div className="relative">
-                                    <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
-                                    <Input
-                                        id="email"
-                                        type="email"
-                                        placeholder="your@email.com"
-                                        value={email}
-                                        onChange={(e) => setEmail(e.target.value)}
-                                        className="pl-10 h-12 border-2 focus:border-primary transition-colors"
-                                        required
-                                    />
-                                </div>
-                            </motion.div>
+                            <CardContent>
+                                <motion.form onSubmit={handleSubmit} className="space-y-5" variants={staggerContainer}>
+                                    <motion.div variants={fadeIn}>
+                                        <FieldInput
+                                            id="firstName"
+                                            type="text"
+                                            label="First Name"
+                                            icon={<User className="w-4 h-4" />}
+                                            placeholder="Enter your first name"
+                                            value={firstName}
+                                            onChange={(e) => setFirstName(e.target.value)}
+                                            required
+                                        />
+                                    </motion.div>
 
-                            <motion.div
-                                variants={fadeIn}
-                                whileHover={{ scale: 1.02 }}
-                                whileTap={{ scale: 0.98 }}
-                            >
-                                <Button
-                                    type="submit"
-                                    disabled={isLoading}
-                                    className="w-full h-12 text-lg font-semibold bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
-                                >
-                                    {isLoading ? "Verifying..." : "Verify & Party! 🎉"}
-                                </Button>
-                            </motion.div>
-                        </motion.form>
-                    </CardContent>
+                                    <motion.div variants={fadeIn}>
+                                        <FieldInput
+                                            id="lastName"
+                                            type="text"
+                                            label="Surname"
+                                            icon={<User className="w-4 h-4" />}
+                                            placeholder="Enter your surname"
+                                            value={lastName}
+                                            onChange={(e) => setLastName(e.target.value)}
+                                            required
+                                        />
+                                    </motion.div>
 
-                    <CardFooter className="flex flex-col space-y-4">
-                        <Separator />
-                        <motion.p
-                            variants={fadeIn}
-                            className="text-center text-sm text-muted-foreground"
-                        >
-                            New to the party?{" "}
-                            <Link href="/register" className="text-primary hover:text-primary/80 font-semibold transition-colors">
-                                Create an account here
-                            </Link>
-                        </motion.p>
-                    </CardFooter>
-                </Card>
+                                    <motion.div variants={fadeIn}>
+                                        <FieldInput
+                                            id="email"
+                                            type="email"
+                                            label="Email Address"
+                                            icon={<Mail className="w-4 h-4" />}
+                                            placeholder="your@email.com"
+                                            value={email}
+                                            onChange={(e) => setEmail(e.target.value)}
+                                            required
+                                        />
+                                    </motion.div>
+
+                                    <motion.div
+                                        className="flex justify-end"
+                                        variants={fadeIn}
+                                        whileHover={{ scale: 1.02 }}
+                                        whileTap={{ scale: 0.98 }}
+                                    >
+                                        <Button
+                                            type="submit"
+                                            disabled={isLoading}
+                                            className=" h-[48px] w-[150px] text-[20px] rounded-full text-base hover:cursor-pointer justify-end font-semibold bg-[#D6215E] hover:bg-gradient-to-r from-primary via-[#FC904E] to-accent hover:from-primary/90 hover:via-[#D6215E]/90 hover:to-accent/90 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+                                        >
+                                            {isLoading ? "Checking in..." : "Check me in"}
+                                        </Button>
+                                    </motion.div>
+                                </motion.form>
+                            </CardContent>
+
+                        </Card>
+                    </div>
+                </div>
             </motion.div>
 
             <AnimatePresence>
