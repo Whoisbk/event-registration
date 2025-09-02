@@ -5,9 +5,8 @@ const nextConfig: NextConfig = {
     HASURA_GRAPHQL_URL: process.env.HASURA_GRAPHQL_URL,
     HASURA_GRAPHQL_ADMIN_SECRET: process.env.HASURA_GRAPHQL_ADMIN_SECRET,
   },
-  output: "standalone",
-  outputFileTracingRoot:
-    "/Users/bokamoso/Documents/My Projects/event-registration",
+  // output: "standalone",
+  // outputFileTracingRoot: process.cwd(),
 };
 
 export default nextConfig;
