@@ -79,7 +79,7 @@ export default function RegisterPage() {
         <motion.div
             initial="hidden"
             animate="visible"
-            className="min-h-screen bg-gradient-to-br from-[#EBC894] via-background to-[#B49EF4] flex items-center justify-center py-4 px-[24px]"
+            className="h-screen bg-gradient-to-br from-[#EBC894] via-background to-[#bba8f5] flex items-center justify-center py-4 px-[24px]"
         >
 
 

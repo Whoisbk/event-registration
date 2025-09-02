@@ -77,7 +77,7 @@ export default function LoginPage() {
         <motion.div
             initial="hidden"
             animate="visible"
-            className="min-h-screen bg-gradient-to-br from-[#EBC894] to-[#B49EF4] flex items-center justify-center p-4"
+            className="h-screen bg-gradient-to-br from-[#EBC894] to-[#B49EF4] flex items-center justify-center p-4"
         >
            
 
