@@ -36,7 +36,7 @@ export default function HomePage() {
       {/* Bottom Navigation Button */}
       <div className="fixed bottom-8 right-8 hover:cursor-pointer bg-[#252525] rounded-full h-[50px] w-[50px] flex items-center justify-center">
 
-        <Link href="/register">
+        <Link href="/login">
           <ChevronRight className="w-6 h-6 text-white" />
         </Link>
 
