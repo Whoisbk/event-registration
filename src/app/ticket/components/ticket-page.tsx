@@ -117,7 +117,7 @@ export default function TicketPage() {
 
             <AnimatePresence>
                 <SuccessDialog key="success-dialog" isOpen={showSuccess} onClose={setShowSuccess} userCode={userCode} />
-                <ErrorDialog key="error-dialog" isOpen={showError} onClose={setShowError} />
+              
             </AnimatePresence>
         </motion.div>
     )
