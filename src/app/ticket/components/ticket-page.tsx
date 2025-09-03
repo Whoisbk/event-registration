@@ -49,24 +49,7 @@ export default function TicketPage() {
     const [userCode, setUserCode] = useState("")
     const [isLoading, setIsLoading] = useState(false)
 
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault()
-        setIsLoading(true)
 
-        try {
-            if (formData.email && formData.firstName && formData.lastName && formData.phoneNumber) {
-                const eventCode = `PARTY${Math.random().toString(36).substring(2, 8).toUpperCase()}`
-                setUserCode(eventCode)
-                setShowSuccess(true)
-            } else {
-                setShowError(true)
-            }
-        } catch {
-            setShowError(true)
-        } finally {
-            setIsLoading(false)
-        }
-    }
 
     return (
         <motion.div
@@ -77,7 +60,7 @@ export default function TicketPage() {
             <motion.div variants={popIn} className="w-full max-w-md h-[530.88px]">
                 <div className="relative">
                     <div className="absolute top-4 right-4 bg-[#F6F6F6] w-[40px] h-[40px] rounded-full p-2">
-                        <Link href="/register">
+                        <Link href="/login">
                             <X className="w-full h-full" />
                         </Link>
                     </div>
@@ -113,7 +96,7 @@ export default function TicketPage() {
                                     <span className="text-center font-[400] text-black">
                                         Save this code - you’ll need to present it to the to get your wristband at the venue.
                                     </span>
-                                    <Link href="/register">
+                                    <Link href="/login">
                                         <Button
                                             type="button"
 

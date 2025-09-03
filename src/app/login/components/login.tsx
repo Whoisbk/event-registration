@@ -15,11 +15,10 @@ import { Mail, Smartphone, ChevronLeft, UserRound, ChevronRight } from "lucide-r
 import Image from "next/image"
 import Logo from "../../../../public/images/LogoSVG.svg"
 import { useRouter } from "next/navigation"
-import { insertUser } from "@/lib/actions/user/user.action"
-import { SuccessDialog } from "@/components/ui/success-dialog"
+import { getUserbyName } from "@/lib/actions/user/user.action"
 
 // Zod validation schema
-const registrationSchema = z.object({
+const loginSchema = z.object({
     firstName: z.string().min(1, "First name is required").min(2, "First name must be at least 2 characters"),
     lastName: z.string().min(1, "Surname is required").min(2, "Surname must be at least 2 characters"),
     email: z.string().min(1, "Email is required").refine((val) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val), {
@@ -30,7 +29,7 @@ const registrationSchema = z.object({
     })
 })
 
-type RegistrationFormData = z.infer<typeof registrationSchema>
+type LoginFormData = z.infer<typeof loginSchema>
 
 const fadeIn = {
     hidden: { opacity: 0, y: 20 },
@@ -62,51 +61,33 @@ const staggerContainer = {
     }
 }
 
-export default function RegisterForm() {
+export default function LoginForm() {
     const [showError, setShowError] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
-    const [showSuccess, setShowSuccess] = useState(false)
-    const [userCode, setUserCode] = useState("")
-    const [errorMessage, setErrorMessage] = useState("")
+    const router = useRouter()
+
     const {
         register,
         handleSubmit,
         formState: { errors }
-    } = useForm<RegistrationFormData>({
-        resolver: zodResolver(registrationSchema),
+    } = useForm<LoginFormData>({
+        resolver: zodResolver(loginSchema),
         mode: "onChange" // Validate on change for real-time feedback
     })
 
-    const onSubmit = async (data: RegistrationFormData) => {
+    const onSubmit = async (data: LoginFormData) => {
         setIsLoading(true)
 
         try {
-            const formData = {
-                firstName: data.firstName,
-                lastName: data.lastName,
-                email: data.email,
-                phoneNumber: data.phoneNumber
-            }
             // Simulate form submission
-            const res = await insertUser(formData)
-            console.log("res", res)
-            if (res.first_name) {
-                setUserCode(res.code)
-                setShowSuccess(true)
-                // router.push(`/ticket?code=${res.code}&name=${res.first_name}&last_name=${res.last_name}&phone_number=${res.phone_number}&id=${res.id}`)
+            const res = await getUserbyName(data.firstName, data.lastName, data.email, data.phoneNumber)
+            if (res.code) {
+                router.push(`/ticket?code=${res.code}&name=${res.first_name}&last_name=${res.last_name}&phone_number=${res.phone_number}`)
             } else {
-                if (res.message && res.message.includes("user_email_key")) {
-                    setErrorMessage("User already registered")
-                } else {
-                    setErrorMessage(res.message)
-                }
                 setShowError(true)
             }
-        } catch (error) {
-            const res = error as { message: string }
-            console.log("error", res)
+        } catch {
             setShowError(true)
-            setErrorMessage(res.message)
         } finally {
             setIsLoading(false)
         }
@@ -139,10 +120,10 @@ export default function RegisterForm() {
                                 />
                                 <motion.div variants={fadeIn} className="gap-12">
                                     <CardTitle className="leading-[100%] text-[26px] font-bold bg-linear-to-r from-[#FC904E] via-[#FF3450] to-[#FF00F8] bg-clip-text text-transparent">
-                                        Register to verify me
+                                        Online Check-in
                                     </CardTitle>
                                     <CardDescription className="text-[16px] mt-1 text-black font-[400] leading-[100%] w-full">
-                                        Fill in your details below to register to verify me.
+                                        Fill in your details below and skip the queue at the venue.
                                     </CardDescription>
                                 </motion.div>
                             </CardHeader>
@@ -201,9 +182,9 @@ export default function RegisterForm() {
                                         <Button
                                             type="submit"
                                             disabled={isLoading}
-                                            className="group h-[48px] w-[180px] hover:w-[197px] font-bold  text-[20px] rounded-full text-base hover:cursor-pointer bg-[#D6215E] hover:bg-linear-to-r hover:from-[#FC904E] hover:via-[#FF3450]/90 hover:to-[#FF00F8] transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+                                            className="group h-[48px] w-[150px] hover:w-[167px] font-bold  text-[20px] rounded-full text-base hover:cursor-pointer bg-[#D6215E] hover:bg-linear-to-r hover:from-[#FC904E] hover:via-[#FF3450]/90 hover:to-[#FF00F8] transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
                                         >
-                                            {isLoading ? "Registering..." : "Register to verify me"} <ChevronRight className="w-6 h-5 text-white hidden group-hover:inline-block" />
+                                            {isLoading ? "Checking in..." : "Check me in"} <ChevronRight className="w-6 h-5 text-white hidden group-hover:inline-block" />
                                         </Button>
 
                                     </motion.div>
@@ -217,9 +198,8 @@ export default function RegisterForm() {
             </motion.div>
 
             <AnimatePresence>
-                <SuccessDialog key="success-dialog" isOpen={showSuccess} onClose={setShowSuccess} userCode={userCode} />
-                <ErrorDialog key="error-dialog" isOpen={showError} onClose={setShowError} message={errorMessage} />
 
+                <ErrorDialog key="error-dialog" isOpen={showError} onClose={setShowError} message="Oops! Not Registered" />
             </AnimatePresence>
         </motion.div>
     )

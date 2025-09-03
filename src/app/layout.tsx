@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   description: "Me Time - Inspiring Me",
   icons: Logo.src,
   openGraph: {
-    images: Logo.src,
+    images: Logo,
     title: "Me Time",
     description: "Me Time - Inspiring Me",
     url: "https://me-time.co.za",
